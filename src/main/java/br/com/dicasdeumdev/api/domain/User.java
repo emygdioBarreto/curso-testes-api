@@ -3,16 +3,9 @@ package br.com.dicasdeumdev.api.domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "tb_user")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 public class User {
 
     @Id
@@ -21,19 +14,88 @@ public class User {
 
     @NotNull
     @NotBlank
-    @Length(min = 4, max = 40)
-    @Column(name = "nome")
+    @Column(name = "nome", length = 40)
     private String name;
 
     @NotNull
     @NotBlank
-    @Length(min = 4, max = 80)
-    @Column(name = "email", unique = true)
+    @Column(name = "email", length = 80, unique = true)
     private String email;
 
     @NotNull
     @NotBlank
-    @Length(min = 4, max = 80)
-    @Column(name = "senha")
+    @Column(name = "senha", length = 30)
     private String password;
+
+    public User() {
+    }
+
+    public User(Integer id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public @NotNull @NotBlank String getName() {
+        return name;
+    }
+
+    public void setName(@NotNull @NotBlank String name) {
+        this.name = name;
+    }
+
+    public @NotNull @NotBlank String getEmail() {
+        return email;
+    }
+
+    public void setEmail(@NotNull @NotBlank String email) {
+        this.email = email;
+    }
+
+    public @NotNull @NotBlank String getPassword() {
+        return password;
+    }
+
+    public void setPassword(@NotNull @NotBlank String password) {
+        this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+        return id.equals(user.id) && name.equals(user.name) && email.equals(user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + email.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
