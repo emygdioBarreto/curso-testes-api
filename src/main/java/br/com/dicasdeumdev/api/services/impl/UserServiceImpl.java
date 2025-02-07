@@ -8,6 +8,7 @@ import br.com.dicasdeumdev.api.services.exceptions.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,8 +23,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO findById(Integer id) {
-        Optional<UserDTO> obj = Optional.ofNullable(mapper.map(repository.findById(id), UserDTO.class));
+    public User findById(Integer id) {
+        Optional<User> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+
+    public List<User> findAll() {
+        return repository.findAll();
     }
 }
