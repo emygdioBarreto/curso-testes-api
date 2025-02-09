@@ -20,7 +20,7 @@ public class LocalConfig {
 
     @Bean
     public List<User> startDB() {
-        User u1 = new User(null, "Enygdio", "emygdio.barreto@gmail.com", "paladinoT8");
+        User u1 = new User(null, "Emygdio", "emygdio.barreto@gmail.com", "paladinoT8");
         User u2 = new User(null, "Flavia", "flavia.coelho@gmail.com", "popa!2111");
 
         return repository.saveAll(List.of(u1,u2));
