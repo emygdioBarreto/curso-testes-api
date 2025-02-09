@@ -19,7 +19,7 @@ public class User {
 
     @NotNull
     @NotBlank
-    @Column(name = "email", length = 80, unique = true)
+    @Column(name = "email", length = 80)
     private String email;
 
     @NotNull
@@ -69,33 +69,5 @@ public class User {
 
     public void setPassword(@NotNull @NotBlank String password) {
         this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-        return id.equals(user.id) && name.equals(user.name) && email.equals(user.email);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + email.hashCode();
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("User{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append('}');
-        return sb.toString();
     }
 }
