@@ -55,4 +55,10 @@ public class UserResource {
                     return ResponseEntity.ok().body(mapper.map(service.update(obj), UserDTO.class));
                 }).orElseThrow(() -> new DataIntegratyViolationException("Email já cadastrado no sistema"));
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id) {
+        service.delete(id);
+    }
 }
