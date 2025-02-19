@@ -1,5 +1,6 @@
 package br.com.dicasdeumdev.api.domain;
 
+import br.com.dicasdeumdev.api.domain.dto.UserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -45,6 +46,10 @@ public class User {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public @NotNull @NotBlank String getName() {
