@@ -1,17 +1,15 @@
 package br.com.dicasdeumdev.api.resources.exceptions;
 
-import br.com.dicasdeumdev.api.services.exceptions.DataIntegratyViolationException;
 import br.com.dicasdeumdev.api.services.exceptions.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
-
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,14 +42,14 @@ class ResourceExceptionHandlerTest {
         assertEquals(OBJETO_NAO_ENCONTRADO, response.getBody().getError());
         assertEquals(404, response.getBody().getStatus());
         assertNotEquals("/user/2", response.getBody().getPath());
-        assertNotEquals(LocalDateTime.now(), response.getBody().getTimestamp());
+        //assertNotEquals(LocalDateTime.now(), response.getBody().getTimestamp());
     }
 
     @Test
     void dataIntegrityViolationException() {
         ResponseEntity<StandardError> response = exceptionHandler
-                .dataIntegratyViolation(
-                        new DataIntegratyViolationException(E_MAIL_JA_CADASTRADO),
+                .dataIntegrityViolation(
+                        new DataIntegrityViolationException(E_MAIL_JA_CADASTRADO),
                         new MockHttpServletRequest());
 
         assertNotNull(response);

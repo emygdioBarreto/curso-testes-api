@@ -38,12 +38,6 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -56,23 +50,11 @@ public class User {
         return name;
     }
 
-    public void setName(@NotNull @NotBlank String name) {
-        this.name = name;
-    }
-
     public @NotNull @NotBlank String getEmail() {
         return email;
     }
 
-    public void setEmail(@NotNull @NotBlank String email) {
-        this.email = email;
-    }
-
     public @NotNull @NotBlank String getPassword() {
         return password;
-    }
-
-    public void setPassword(@NotNull @NotBlank String password) {
-        this.password = password;
     }
 }
