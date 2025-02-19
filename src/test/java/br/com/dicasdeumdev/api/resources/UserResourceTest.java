@@ -26,6 +26,7 @@ import static org.mockito.Mockito.*;
 class UserResourceTest {
 
     private static final Integer ID = 1;
+    private static final Integer INDEX = 0;
     private static final String NAME = "Emygdio";
     private static final String EMAIL = "emygdio.barreto@gmail.com";
     private static final String PASSWORD = "paladinoT8";
@@ -78,6 +79,7 @@ class UserResourceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(ResponseEntity.class, response.getClass());
         assertEquals(ArrayList.class, response.getBody().getClass());
+        //assertEquals(UserDTO.class, response.getBody().get(INDEX).getClass());
 
         assertEquals(ID, userDTO.getId());
         assertEquals(NAME, userDTO.getName());

@@ -33,7 +33,7 @@ public class UserResource {
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll()
-                .stream().map(user -> mapper.map(user, UserDTO.class)).toList());
+                .stream().map(user -> mapper.map(user, UserDTO.class)).collect(Collectors.toList()));
     }
 
     @PostMapping
