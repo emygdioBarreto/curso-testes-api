@@ -16,6 +16,10 @@ public class StandardError {
         this.path = path;
     }
 
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
     public Integer getStatus() {
         return status;
     }
